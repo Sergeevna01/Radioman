@@ -9,15 +9,15 @@ public class RadioTest {
 
     @Test
     void shouldSetStation() {
-        Radio radio = new Radio(45);
+        Radio radio = new Radio(35);
         radio.setCurrentStation(22);
         assertEquals(22, radio.getCurrentStation());
     }
 
     @Test
     void shouldMaxSetStation() {
-        Radio radio = new Radio(45);
-        radio.setCurrentStation(45);
+        Radio radio = new Radio(35);
+        radio.setCurrentStation(35);
         assertEquals(0, radio.getCurrentStation());
     }
 

@@ -1,7 +1,7 @@
 package ru.netology.radioman;
 
 public class Radio {
-    private int maxStation = 45;
+    private int maxStation = 35;
     private int minStation = 0;
     private int maxVolume = 100;
     private int minVolume = 0;
@@ -56,7 +56,7 @@ public class Radio {
         } else currentVolume = minVolume;
     }
 
-    public void setCurrentVolume(int currentVolume) {  // изменение данных для теста кнопок "+" и "-"
+    public void setCurrentVolume(int currentVolume) {
         if (currentVolume < minVolume || currentVolume > maxVolume) {
             return;
         }
