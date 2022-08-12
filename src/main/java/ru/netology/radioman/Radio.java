@@ -1,12 +1,21 @@
 package ru.netology.radioman;
 
 public class Radio {
-    private int currentStation;
-    private int maxStation = 9;
+    private int maxStation = 35;
     private int minStation = 0;
-    private int currentVolume;
-    private int maxVolume = 10;
+    private int maxVolume = 100;
     private int minVolume = 0;
+    private int countStation = 10;
+    private int currentVolume;
+    private int currentStation;
+
+    public Radio(int countStation) {
+        this.countStation = countStation;
+    }
+
+    public Radio() {
+
+    }
 
     public int getCurrentStation() {                    //текущее значение станции
         return currentStation;
@@ -17,19 +26,19 @@ public class Radio {
     }
 
     public void nextStation() {                         //кнопка "следующая станция"
-        if (currentStation < maxStation) {
-            setCurrentStation(currentStation + 1);
-        } else setCurrentStation(minStation);
+        if (countStation - 1 <= currentStation) {
+            setCurrentStation(minStation);
+        } else setCurrentStation(currentStation + 1);
     }
 
     public void prevStation() {                         // кнопка "предидущая станция"
-        if (currentStation > minStation) {
-            setCurrentStation(currentStation - 1);
-        } else setCurrentStation(maxStation);
+        if (currentStation <= minStation) {
+            setCurrentStation(countStation - 1);
+        } else setCurrentStation(currentStation - 1);
     }
 
     public void setCurrentStation(int currentStation) {  // ввод станции пользователем
-        if (currentStation > maxStation || currentStation < minStation) {
+        if (currentStation > countStation - 1 || currentStation < minStation) {
             return;
         }
         this.currentStation = currentStation;
@@ -47,7 +56,7 @@ public class Radio {
         } else currentVolume = minVolume;
     }
 
-    public void setCurrentVolume(int currentVolume) {  // изменение данных для теста кнопок "+" и "-"
+    public void setCurrentVolume(int currentVolume) {
         if (currentVolume < minVolume || currentVolume > maxVolume) {
             return;
         }

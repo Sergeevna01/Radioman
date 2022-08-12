@@ -8,6 +8,21 @@ public class RadioTest {
     Radio radio = new Radio();
 
     @Test
+    void shouldSetStation() {
+        Radio radio = new Radio(35);
+        radio.setCurrentStation(22);
+        assertEquals(22, radio.getCurrentStation());
+    }
+
+    @Test
+    void shouldMaxSetStation() {
+        Radio radio = new Radio(35);
+        radio.setCurrentStation(35);
+        assertEquals(0, radio.getCurrentStation());
+    }
+
+
+    @Test
     void nextStationChange() {     // кнопка "следующая станция"
         radio.nextStation();
         int expected = 1;
@@ -75,9 +90,9 @@ public class RadioTest {
 
     @Test
     void increaseVolumeChangeUpperValue() { // увеличение громкости
-        radio.setCurrentVolume(10);
+        radio.setCurrentVolume(100);
         radio.increaseVolume();
-        int expected = 10;
+        int expected = 100;
         int actual = radio.getCurrentVolume();
         assertEquals(expected, actual);
     }
@@ -101,11 +116,12 @@ public class RadioTest {
 
     @Test
     void setCurrentVolumeMax() {
-        radio.setCurrentVolume(19);
+        radio.setCurrentVolume(119);
         int expected = 0;
         int actual = radio.getCurrentVolume();
         assertEquals(expected, actual);
     }
+
     @Test
     void setCurrentVolumeMin() {
         radio.setCurrentVolume(-5);
